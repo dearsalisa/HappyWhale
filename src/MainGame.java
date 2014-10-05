@@ -1,6 +1,6 @@
 
 
-import java.awt.Font;
+
 import java.util.ArrayList;
 
 import org.newdawn.slick.AppGameContainer;
@@ -8,7 +8,6 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -49,20 +48,43 @@ public class MainGame extends BasicGame {
 	}
 	
 	private void builder() throws SlickException{
-		int a=200 , b=100;
+		int a=0 , b=0;
 		
 		
-		plates.add(new Plate(a,100));
+		plates.add(new Plate(a+=200,100));
 		plates.add(new Plate(a+=250,150));
 		plates.add(new Plate(a+=250,100));
-		plates.add(new Plate(a+=250,100));
-		plates.add(new Plate(a+=450,100));
 		
-		plates.add(new Plate(b,400));
+		plates.add(new Plate(a+=400,150));
+		
+		plates.add(new Plate(a+=400,200));
+		
+		plates.add(new Plate(a+=450,200));
+		plates.add(new Plate(a+=250,150));
+		plates.add(new Plate(a+=250,100));
+		
+		plates.add(new Plate(a+=800,100));
+		plates.add(new Plate(a+=300,100));
+		
+		plates.add(new Plate(a+=400,100));
+		
+		//--------------------//
+		
+		plates.add(new Plate(b+=100,400));
 		plates.add(new Plate(b+=250,450));
 		plates.add(new Plate(b+=250,400));
-		plates.add(new Plate(b+=550,400));
-		plates.add(new Plate(b+=100,400));
+		plates.add(new Plate(b+=250,400));
+		
+		plates.add(new Plate(b+=400,400));
+		
+		plates.add(new Plate(b+=400,450));
+		
+		plates.add(new Plate(b+=800,400));
+		plates.add(new Plate(b+=250,400));
+		plates.add(new Plate(b+=250,450));
+		plates.add(new Plate(b+=250,500));
+		
+		plates.add(new Plate(b+=500,450));
 	}
 	
 	@Override

@@ -25,12 +25,12 @@ public class Plate {
 	public void update(){
 		if(!isEnd){
 			x-=speed;
-			speed+=0.005;
-			if(x<=-300) x=1000;
+			speed+=0.001;
+			if(x<=-3000) x=1000;
 		}
 	}
 	public void endGame(){
-		isEnd = false;
+		isEnd = true;
 	}
 	public float getX() { return x; }
 	public float getY() { return y; }

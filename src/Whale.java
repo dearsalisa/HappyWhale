@@ -8,10 +8,8 @@ public class Whale {
 	private float x;
 	private float y;
 	private Image image;
-	private Image imgF;
 	private int cnt = 0;
 	private float G;
-	private float vx;
 	private boolean isJump = true;
 	private ArrayList<Plate> plates;
 
@@ -21,7 +19,6 @@ public class Whale {
 		this.y = y;
 		this.plates = plates;
 		image = new Image("res/whale1.png");
-		imgF = image.getFlippedCopy(true, false);
 	}
 
 	public void render() {
@@ -67,7 +64,7 @@ public class Whale {
 			else
 				temp = 50;
 			if ((plates.get(i).getX() <= x+80 && plates.get(i).getX()
-					+ plates.get(i).getWidth() >= x)
+					+ plates.get(i).getWidth() >= x-5)
 					&& (plates.get(i).getY() >= y + temp -10 && plates.get(i).getY() <= y + temp + 10)) {
 				isJump = true;
 				return true;
