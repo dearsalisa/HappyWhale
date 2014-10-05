@@ -1,5 +1,6 @@
 
 
+import java.awt.Font;
 import java.util.ArrayList;
 
 import org.newdawn.slick.AppGameContainer;
@@ -19,6 +20,7 @@ public class MainGame extends BasicGame {
 	private Whale whale;
 	private ArrayList<Plate> plates;
 	private int cnt=0;
+	private int score = 0;
 	
 	public MainGame(String title) throws SlickException {
 		super(title);
@@ -29,6 +31,8 @@ public class MainGame extends BasicGame {
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		bg.render();
 		whale.render();
+		arg1.drawString(""+score,700,20);
+		
 		for(int i=0 ; i<plates.size() ; i++)
 			plates.get(i).render();
 	}
@@ -39,18 +43,26 @@ public class MainGame extends BasicGame {
 		Color background = new Color(128, 128, 128);
 	    container.getGraphics().setBackground(background);
 	    this.bg = new Background(0,0);
-	    this.whale = new Whale(100 ,300);
+	    this.whale = new Whale(200 ,300,plates);
 	    //this.plate = new Plate(0,0);
 	    builder();
 	}
 	
 	private void builder() throws SlickException{
-		plates.add(new Plate(0,100));
-		plates.add(new Plate(300,150));
-		plates.add(new Plate(600,100));
-		plates.add(new Plate(0,400));
-		plates.add(new Plate(300,450));
-		plates.add(new Plate(600,400));
+		int a=200 , b=100;
+		
+		
+		plates.add(new Plate(a,100));
+		plates.add(new Plate(a+=250,150));
+		plates.add(new Plate(a+=250,100));
+		plates.add(new Plate(a+=250,100));
+		plates.add(new Plate(a+=450,100));
+		
+		plates.add(new Plate(b,400));
+		plates.add(new Plate(b+=250,450));
+		plates.add(new Plate(b+=250,400));
+		plates.add(new Plate(b+=550,400));
+		plates.add(new Plate(b+=100,400));
 	}
 	
 	@Override
@@ -59,6 +71,7 @@ public class MainGame extends BasicGame {
 		whale.update();
 		for(int i=0 ; i<plates.size() ; i++)
 			plates.get(i).update();
+			if(!whale.isEnd()) score+=1;
 	}
 	
 	@Override
@@ -69,6 +82,7 @@ public class MainGame extends BasicGame {
 	    	whale.jump(cnt);
 	    }
 	}
+	
 	
 	public static void main(String[] args){
 		try {
