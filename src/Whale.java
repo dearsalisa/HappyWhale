@@ -36,8 +36,8 @@ public class Whale {
 			G = 0;
 		if (isCollitionBack() == true)
 			x -= plates.get(0).getSpeed();
-		if(isEnd()) {
-			for(int i=0 ; i<plates.size() ; i++)
+		if (isEnd()) {
+			for (int i = 0; i < plates.size(); i++)
 				plates.get(i).endGame();
 		}
 	}
@@ -63,9 +63,10 @@ public class Whale {
 				temp = -40;
 			else
 				temp = 50;
-			if ((plates.get(i).getX() <= x+80 && plates.get(i).getX()
-					+ plates.get(i).getWidth() >= x-5)
-					&& (plates.get(i).getY() >= y + temp -10 && plates.get(i).getY() <= y + temp + 10)) {
+			if ((plates.get(i).getX() <= x + 80 && plates.get(i).getX()
+					+ plates.get(i).getWidth() >= x - 5)
+					&& (plates.get(i).getY() >= y + temp - 10 && plates.get(i)
+							.getY() <= y + temp + 10)) {
 				isJump = true;
 				return true;
 			}
@@ -76,20 +77,21 @@ public class Whale {
 
 	public boolean isCollitionBack() {
 		for (int i = 0; i < plates.size(); i++) {
-			if ((plates.get(i).getX()-80 <= x && x <=plates.get(i).getX()+80 )
-					&& (plates.get(i).getY()-10 <= y && y<=plates.get(i).getY()+40 )) {
+			if ((plates.get(i).getX() - 80 <= x && x <= plates.get(i).getX() + 80)
+					&& (plates.get(i).getY() - 10 <= y && y <= plates.get(i)
+							.getY() + 40)) {
 				System.out.println("IN : X" + x + " Y" + y);
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	public boolean isEnd(){
-		if(x<-70 || y>600 || y<0) {
-			
+
+	public boolean isEnd() {
+		if (x < -70 || y > 600 || y < 0) {
+
 			return true;
-		}
-		else return false;
+		} else
+			return false;
 	}
 }
