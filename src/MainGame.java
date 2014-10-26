@@ -37,7 +37,10 @@ public class MainGame extends BasicGame {
 		for (int i = 0; i < plates.size(); i++)
 			plates.get(i).render();
 		}
-		if(whale.isEnd()) gameover.render();
+		if(whale.isEnd() && first == true) 
+		{
+			gameover.render(); 
+		}
 	}
 
 	@Override
@@ -114,6 +117,10 @@ public class MainGame extends BasicGame {
 		if (key == Input.KEY_ENTER && first == false) {
 			// do something
 			first = true;
+		}
+		if (key == Input.KEY_ENTER && whale.isEnd() == true) {
+			// do something
+			first = false;
 		}
 	}
 
