@@ -13,9 +13,12 @@ public class MainGame extends BasicGame {
 
 	private Background bg;
 	private Whale whale;
+	private Start start;
+	private GameOver gameover;
 	private ArrayList<Plate> plates;
 	private int cnt = 0;
 	private int score = 0;
+	private boolean first = false;
 
 	public MainGame(String title) throws SlickException {
 		super(title);
@@ -24,20 +27,27 @@ public class MainGame extends BasicGame {
 
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
+		if(first == false) start.render();
+		else	
+		{
 		bg.render();
 		whale.render();
 		arg1.drawString("Score : " + score, 600, 20);
 
 		for (int i = 0; i < plates.size(); i++)
 			plates.get(i).render();
+		}
+		if(whale.isEnd()) gameover.render();
 	}
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		// TODO Auto-generated method stub
 		Color background = new Color(128, 128, 128);
-		container.getGraphics().setBackground(background);
+		container.getGraphics().setBackground(background);	
+		this.start = new Start(0, 0);
 		this.bg = new Background(0, 0);
+		this.gameover = new GameOver(30, 200);
 		this.whale = new Whale(200, 300, plates);
 		// this.plate = new Plate(0,0);
 		builder();
@@ -84,20 +94,26 @@ public class MainGame extends BasicGame {
 
 	@Override
 	public void update(GameContainer arg0, int arg1) throws SlickException {
-		// TODO Auto-generated method stub
+		if(first == true)
+		{
 		whale.update();
 		for (int i = 0; i < plates.size(); i++)
 			plates.get(i).update();
 		if (!whale.isEnd())
 			score += 1;
+		}
 	}
 
 	@Override
 	public void keyPressed(int key, char c) {
-		if (key == Input.KEY_SPACE) {
+		if (key == Input.KEY_SPACE && first == true) {
 			// do something
 			cnt++;
 			whale.jump(cnt);
+		}
+		if (key == Input.KEY_ENTER && first == false) {
+			// do something
+			first = true;
 		}
 	}
 
@@ -112,5 +128,4 @@ public class MainGame extends BasicGame {
 			e.printStackTrace();
 		}
 	}
-
 }

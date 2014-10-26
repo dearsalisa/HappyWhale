@@ -39,6 +39,7 @@ public class Whale {
 		if (isEnd()) {
 			for (int i = 0; i < plates.size(); i++)
 				plates.get(i).endGame();
+			
 		}
 	}
 
